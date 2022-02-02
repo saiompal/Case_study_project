@@ -1,0 +1,42 @@
+
+<app-sidebar></app-sidebar>
+<div class="container">
+    <div class="content">
+      <div class="left-side">
+        <div class="address details">
+          <i class="fas fa-map-marker-alt"></i>
+          <div class="topic">Address</div>
+          <div class="text-one">Viman Nagar, Pune</div>
+        </div>
+        <div class="phone details">
+          <i class="fas fa-phone-alt"></i>
+          <div class="topic">Phone</div>
+          <div class="text-one">+91 7742350675</div>
+          
+        </div>
+        <div class="email details">
+            
+          <div class="topic">Email</div>
+          <div class="text-two">saiompal13@gmail.com</div>
+        </div>
+      </div>
+      <div class="right-side">
+        <div class="topic-text">Send us a message</div>
+        
+      <form #f="ngForm" novalidate (ngSubmit)="feedback()">
+        <div class="input-box">
+          <input [(ngModel)]="feedbackModel.name" #name="ngModel" name="name" type="text" placeholder="Enter your name" required>
+        </div>
+        <div class="input-box">
+          <input [(ngModel)]="feedbackModel.email" #email="ngModel" name="email" type="text" placeholder="Enter your email" required>
+        </div>
+        <div class="input-box message-box">
+          <input [(ngModel)]="feedbackModel.comments" #comments="ngModel" name="comments" type="text" placeholder="Comments" required>
+        </div>
+        
+        <button class="btn btn-primary btn-block confirm-button" type="submit" >Send feedback</button>
+        
+      </form>
+    </div>
+    </div>
+  </div>

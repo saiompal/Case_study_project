@@ -1,0 +1,19 @@
+<div class="container sample chart-container">
+    <div class="options vertical" >
+        <label id="legendTitle" style="color: aliceblue;">{{name}}</label>
+    </div>
+
+    <igx-financial-chart height="80%" width="100%"
+    [dataSource]="data"
+    chartType="Candle"
+    thickness=2
+    xAxisTitle="Year"
+    yAxisTitle="Price"
+    negativeOutlines="rgb(213, 94, 0)"
+    negativeBrushes="Transparent"
+    brushes="Transparent"
+    zoomSliderType="None">
+    </igx-financial-chart>
+</div>
+
+

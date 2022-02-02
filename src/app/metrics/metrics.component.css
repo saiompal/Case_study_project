@@ -1,0 +1,58 @@
+.metrics-container{
+    /* background-image: url("https://siddharthpetro.com/wp-content/uploads/2019/09/insurance-footer-background.png"); */
+    position: absolute;
+    top: 99%;
+    left: 13%;
+    /* border-style: outset;  */
+    border-radius: 10px; 
+    /* background-color: rgb(9, 28, 63); */
+    background-color:rgb(6, 7, 53);
+    height: 200px;
+    padding: 0%;
+}
+.order-metric {
+    color: #fff;
+}
+
+.bg-c-blue {
+    background: linear-gradient(45deg,#4099ff,#73b4ff);
+}
+
+.bg-c-green {
+    background: linear-gradient(45deg,#2ed8b6,#59e0c5);
+}
+
+.bg-c-yellow {
+    background: linear-gradient(45deg,#FFB64D,#ffcb80);
+}
+
+.bg-c-pink {
+    background: linear-gradient(45deg,#FF5370,#ff869a);
+}
+
+
+.metric {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    border: none;
+    /* margin-bottom: 30px; */
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.metric .metric-block {
+    padding: 25px;
+}
+
+.order-metric i {
+    font-size: 26px;
+}
+
+/* .f-left {
+    float: left;
+}
+
+.f-right {
+    float: right;
+} */

@@ -1,0 +1,64 @@
+{
+  "feedback": [
+    {
+      "name": "SAIOM PAL",
+      "email": "saiompal13@gmail.com",
+      "comments": "Nice word",
+      "id": 1
+    },
+    {
+      "name": "SAIOM PAL",
+      "email": "palsaiom13@gmail.com",
+      "comments": "Good",
+      "id": 2
+    }
+  ],
+  "signupUsers": [
+    {
+      "type": "pro",
+      "username": "saiom",
+      "email": "saiompal13@gmail.com",
+      "password": "saiompal",
+      "confirmpassword": "saiompal",
+      "id": 1
+    },
+    {
+      "type": "basic",
+      "username": "admin",
+      "email": "palsaiom13@gmail.com",
+      "password": "saiompal",
+      "confirmpassword": "saiompal",
+      "id": 2
+    }
+  ],
+  "watchList": [
+    {
+      "id":1,
+      "company": "Apple",
+      "stock_price": 170,
+      "percentage_change": 6.98,
+      "action": "Delete"
+    },
+    {
+      "id": 3,
+      "company": "Microsoft",
+      "stock_price": 308,
+      "percentage_change": 2.81,
+      "action": "Delete"
+    },
+    {
+      "id": 4,
+      "company": "Walmart",
+      "stock_price": 137,
+      "percentage_change": 1.24,
+      "action": "Delete"
+    },
+    {
+      "id": 5,
+      "company": "Tesla",
+      "stock_price": 846.35,
+      "percentage_change": 2.08,
+      "action": "Delete"
+    }
+  ]
+}

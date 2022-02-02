@@ -1,0 +1,62 @@
+<div class="container metrics-container">
+    <div class="row">
+        <div class="col-md-3 col-xl-2" style="margin-left: 160px;">
+            <div class="metric bg-c-blue order-metric">
+                <div class="metric-block">
+                    <h6 class="m-b-20">PE Ratio</h6>
+                    <h2 *ngIf="pro; else showThis" class="text-right"><i class="fa fa-rocket f-left"></i><span>{{pe_ratio}}</span></h2>
+                    <ng-template #showThis>      
+                        <h2 class="text-right"><i class="fa fa-lock f-left"></i><span> Please Subscribe</span></h2>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3 col-xl-2">
+            <div class="metric bg-c-green order-metric">
+                <div class="metric-block">
+                    <h6 class="m-b-20">PB Ratio</h6>
+                    <h2 *ngIf="pro; else showThis" class="text-right"><i class="fa fa-rocket f-left"></i><span>{{pb_ratio}}</span></h2>
+                    <ng-template #showThis>      
+                        <h2 class="text-right"><i class="fa fa-lock f-left"></i><span> Please Subscribe</span></h2>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3 col-xl-2">
+            <div class="metric bg-c-yellow order-metric">
+                <div class="metric-block">
+                    <h6 class="m-b-20">Dividend Yield</h6>
+                    <h2 *ngIf="pro; else showThis" class="text-right"><i class="fa fa-rocket f-left"></i><span>{{div_yield}}%</span></h2>
+                    <ng-template #showThis>      
+                        <h2 class="text-right"><i class="fa fa-lock f-left"></i><span> Please Subscribe</span></h2>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3 col-xl-2">
+            <div class="metric bg-c-pink order-metric">
+                <div class="metric-block">
+                    <h6 class="m-b-20">Sector PE</h6>
+                    <h2 *ngIf="pro; else showThis" class="text-right"><i class="fa fa-rocket f-left"></i><span>{{sector_pe}}</span></h2>
+                    <ng-template #showThis>      
+                        <h2 class="text-right"><i class="fa fa-lock f-left"></i><span> Please Subscribe</span></h2>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-xl-2">
+            <div class="metric bg-c-pink order-metric">
+                <div class="metric-block">
+                    <h6 class="m-b-20">Analysts Suggestions</h6>
+                    <h2 *ngIf="pro; else showThis" class="text-right text-success"><i class="fa fa-rocket f-left"></i><span>{{buy}}%(Buy)</span></h2>
+                    <ng-template #showThis>      
+                        <h2 class="text-right"><i class="fa fa-lock f-left"></i><span> Please Subscribe</span></h2>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
