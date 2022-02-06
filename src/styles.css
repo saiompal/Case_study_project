@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-    background-color:rgb(6, 7, 53);
+    
     /* background-image: url("https://wallpaperboat.com/wp-content/uploads/2019/06/minimalist-desktop-1.jpg"); */
+    background-image: url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700396662.jpg');
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

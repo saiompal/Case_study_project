@@ -21,8 +21,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './auth.guard';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ContactusComponent } from './contactus/contactus.component';
+import { AuthService } from './auth.service';
+import { TokenInterceptorService } from './token-interceptor.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +36,7 @@ import { ContactusComponent } from './contactus/contactus.component';
     DashboardComponent,
     LoginComponent,
     SignupComponent,
-    ContactusComponent,
+    ContactusComponent
     
   ],
   imports: [
@@ -51,7 +54,12 @@ import { ContactusComponent } from './contactus/contactus.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:TokenInterceptorService,
+      multi:true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

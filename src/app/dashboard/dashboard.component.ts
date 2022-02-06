@@ -1,5 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output,OnChanges, SimpleChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -7,34 +8,59 @@ import { NgForm } from '@angular/forms';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnChanges {
   public details: string;
-  public name: string = "TCS";
-  constructor() { }
-
-
+  public name: string = "TSLA";
+  public watchlist_arr:string[] =[];
+  public username:any;
+  public hide:boolean=false;
+  constructor(private _authservice:AuthService) { }
+  
   onSubmit(f: NgForm) {
     console.log(f.value.search);
     this.name = f.value.search;
-    if (this.name === "ICICIBANK") {
-      this.details="ICICI Bank Limited is an Indian multinational bank and financial services company headquartered in the city of Vadodara, Gujarat.";
+  }
+  addtoWatchlist(w:NgForm){
+    let username:any = localStorage.getItem('user')
+    this._authservice.add_data_to_watchlist(this.name,username)
+    .subscribe(
+      res=>console.log(res),
+      err=>console.log(err)
+    )
+  }
+  ngOnInit():void{
+    this.username = localStorage.getItem('user');
+    this._authservice.watchlist_arr(this.username)
+    .subscribe(
+      res=>{this.watchlist_arr=res},
+      err=>{console.log(err)}
+    )
+    setTimeout(() => {
+      for(let i=0;i<this.watchlist_arr.length;i++){
+      if(this.watchlist_arr[i]===this.name){
+        this.hide=true;
+      }
     }
-    else if (this.name === "BAJFINANCE") {
-      this.details="Bajaj Finance Limited, a subsidiary of Bajaj Finserv, is an Indian non-banking financial company headquartered in the city of Pune, India. The company deals in consumer finance, SME and commercial lending, and wealth management.";
-    }
+    }, 1000);
   }
 
-
-  ngOnInit(): void {
-    if (this.name === "TCS") {
-      this.details = "Tata Consultancy Services is an Indian multinational information technology services and consulting company headquartered in Mumbai, Maharashtra, India with its largest campus located in Chennai, Tamil Nadu, India. As of February 2021, TCS is the largest IT services company in the world by market capitalisation.";
+  ngOnChanges(changes: SimpleChanges): void{
+    this.hide =false;
+    this.username = localStorage.getItem('user');
+    this._authservice.watchlist_arr(this.username)
+    .subscribe(
+      res=>{this.watchlist_arr=res},
+      err=>{console.log(err)}
+    )
+    setTimeout(() => {
+      for(let i=0;i<this.watchlist_arr.length;i++){
+      if(this.watchlist_arr[i]===this.name){
+        this.hide=true;
+      }
     }
-    else if (this.name === "ICICIBANK") {
-      this.details="ICICI Bank Limited is an Indian multinational bank and financial services company headquartered in the city of Vadodara, Gujarat.";
-    }
-    else if (this.name === "BAJFFINANCE") {
-      this.details="Bajaj Finance Limited, a subsidiary of Bajaj Finserv, is an Indian non-banking financial company headquartered in the city of Pune, India. The company deals in consumer finance, SME and commercial lending, and wealth management.";
-    }
+    console.log(this.hide);
+    }, 1000);
   }
+  
 
 }

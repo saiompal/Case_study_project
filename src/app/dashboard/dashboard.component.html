@@ -1,15 +1,15 @@
 <app-sidebar></app-sidebar>
 <div class="header">
   <form #f="ngForm" novalidate (ngSubmit)="onSubmit(f)">
-  <div class="input-group spacing">
-    <div class="form-outline col-4">
-      <input ngModel #search="ngModel" name="search" type="search" id="form1" class="form-control" />
+    <div class="input-group spacing">
+      <div class="form-outline col-4">
+        <input ngModel #search="ngModel" name="search" type="search" id="form1" class="form-control" />
+      </div>
+      <button type="submit" class="btn btn-primary">
+        Search
+      </button>
     </div>
-    <button type="submit" class="btn btn-primary">
-      Search
-    </button>
-  </div>
-</form>
+  </form>
 </div>
 
 
@@ -23,29 +23,21 @@
             alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
           <div class="card-img-overlay d-flex flex-column">
             <div class="card-body">
-              <small class="card-meta mb-2">{{name}}</small>
-              <h4 class="card-title mt-0 ">{{details}}</h4>
-              <!-- <small><i class="far fa-clock"></i> October 15, 2020</small> -->
+              <small class="card-meta mb-2">Please do your own due diligence</small>
+              <h4 class="card-title mt-0 ">Investment due diligence is a necessary process for both buyers and sellers
+                to undertake to ensure the swift execution of their envisaged transaction. Although, with the stakes
+                high, there are certain challenges that can arise throughout the process which, with careful planning
+                and execution, can be mitigated.</h4>
             </div>
-            <!-- <div class="card-footer">
-              <div class="media">
-                <img class="mr-3 rounded-circle"
-                  src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/male-512.png"
-                  alt="Generic placeholder image" style="max-width:50px">
-                <div class="media-body">
-                  <h6 class="my-0 text-white d-block">Oz COruhlu</h6>
-                  <small>Director of UI/UX</small>
-                </div>
-              </div>
-            </div> -->
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<form>
-<button type="submit" class="watchlist-btn btn btn-primary btn-lg">Add to Watchlist</button>
+<form #w="ngForm">
+  <button type="submit" (click)="addtoWatchlist(w)" class="watchlist-btn btn btn-primary btn-lg">Add to
+    Watchlist</button>
 </form>
 
 <app-charts [stock]="name"></app-charts>

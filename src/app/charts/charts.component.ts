@@ -1,43 +1,57 @@
-import { Component, OnInit,ChangeDetectionStrategy, Input } from '@angular/core';
-import icici from '../../assets/ICICIBANK.json';
-import tcs from '../../assets/TCS.json';
-import bajaj from '../../assets/BAJFINANCE.json';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { DataService } from '../data.service';
+
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+
   selector: 'app-charts',
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.css']
 })
-export class ChartsComponent implements OnInit {
+export class ChartsComponent implements OnInit, OnChanges {
   @Input("stock") public name: string;
-  public data:any;
-  
-    constructor() {
+  public chart_data: any;
+  public stock_data: any[]=[];
+  public data: any;
+  constructor(private dataservice: DataService) {
 
-    }
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.stock_data=[];
+    this.getdata();
+    this.fetch();
+    
+  }
 
   ngOnInit(): void {
-    console.log(this.name);
-      if(this.name==="ICICIBANK"){
-        this.data=icici;
-      }
-      else if(this.name=="TCS"){
-        this.data=tcs;
-      }
-      else if(this.name==="BAJFINANCE"){
-        this.data=bajaj;
-      }
+    this.getdata();
+    this.fetch();
   }
-  ngOnChanges(){
-    if(this.name==="ICICIBANK"){
-      this.data=icici;
+
+   public fetch(){
+    setTimeout(() => {
+      for (let i = 0; i < 100; i++) {
+      let date: string = Object.keys(this.data["Weekly Time Series"])[i];
+      this.stock_data[i] =
+      {
+        time: new Date(date),
+        open: parseFloat(this.data["Weekly Time Series"][date]['1. open']),
+        high: parseFloat(this.data["Weekly Time Series"][date]['2. high']),
+        low: parseFloat(this.data["Weekly Time Series"][date]['3. low']),
+        close: parseFloat(this.data["Weekly Time Series"][date]['4. close']),
+        volume: parseFloat(this.data["Weekly Time Series"][date]['5. volume'])
+      }
     }
-    else if(this.name=="TCS"){
-      this.data=tcs;
-    }
-    else if(this.name==="BAJFINANCE"){
-      this.data=bajaj;
-    }
+    this.stock_data.reverse();
+    this.chart_data = [this.stock_data];
+    }, 4000);
+   }
+   public  getdata() {
+    this.dataservice.getdata(this.name).subscribe(
+       (apidata) => {
+      this.data = apidata;
+    });
   }
+
+
 
 }

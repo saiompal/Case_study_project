@@ -1,7 +1,7 @@
 <div class="container mt-5 mb-5 d-flex justify-content-center pos">
     <div class="card px-1 py-4">
         <div class="card-body">
-            <form #f="ngForm" novalidate (ngSubmit)="signup()">
+            <form #f="ngForm" novalidate (ngSubmit)="registerUser()">
                 <h2 class="card-title mb-3">Account Type</h2>
                 <div class="d-flex flex-row"> <label class="radio mr-1"> <input [(ngModel)]="userModel.type" #type="ngModel" type="radio"
                             name="type" value="basic" checked>

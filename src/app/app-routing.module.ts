@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:'watchlist',component:WatchlistComponent,canActivate:[AuthGuard]},
   {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard]},
   {path:"",redirectTo:"login",pathMatch:"full"}, 
-  {path:"signup", component:SignupComponent},
+  {path:"register", component:SignupComponent},
   {path:"login",component:LoginComponent},
   {path:"contactus",component:ContactusComponent,canActivate:[AuthGuard]},
   

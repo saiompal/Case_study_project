@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Feedback } from './feedback';
 import { NgModule } from '@angular/core';
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-contactus',
   templateUrl: './contactus.component.html',
@@ -10,18 +11,20 @@ import { NgModule } from '@angular/core';
 })
 export class ContactusComponent implements OnInit {
   feedbackModel = new Feedback();
-  constructor(private http:HttpClient, private router:Router){}
+  constructor(private http:HttpClient, private router:Router,private _authservice:AuthService){}
+  
   feedback(){
-    this.http.post<any>("http://localhost:3000/feedback",this.feedbackModel)
-    .subscribe(res=>{
-      alert("feedback Submitted");
-      this.router.navigate(['dashboard']);
-    },error=>{
-      alert("Failure");
-    })  
-      }
-
+    this._authservice.sendfeedback(this.feedbackModel)
+    .subscribe(
+      res=>{
+        console.log(res)
+        this.router.navigate(['dashboard']);
+      },
+      err=>{console.log(err)}
+    )
+  }
   ngOnInit(): void {
+
   }
   
 

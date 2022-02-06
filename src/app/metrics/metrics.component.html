@@ -15,8 +15,8 @@
         <div class="col-md-3 col-xl-2">
             <div class="metric bg-c-green order-metric">
                 <div class="metric-block">
-                    <h6 class="m-b-20">PB Ratio</h6>
-                    <h2 *ngIf="pro; else showThis" class="text-right"><i class="fa fa-rocket f-left"></i><span>{{pb_ratio}}</span></h2>
+                    <h6 class="m-b-20">Dividend per share</h6>
+                    <h2 *ngIf="pro; else showThis" class="text-right"><i class="fa fa-rocket f-left"></i><span>{{dividend_pre_share}}</span></h2>
                     <ng-template #showThis>      
                         <h2 class="text-right"><i class="fa fa-lock f-left"></i><span> Please Subscribe</span></h2>
                     </ng-template>
@@ -39,8 +39,8 @@
         <div class="col-md-3 col-xl-2">
             <div class="metric bg-c-pink order-metric">
                 <div class="metric-block">
-                    <h6 class="m-b-20">Sector PE</h6>
-                    <h2 *ngIf="pro; else showThis" class="text-right"><i class="fa fa-rocket f-left"></i><span>{{sector_pe}}</span></h2>
+                    <h6 class="m-b-20">Debt To Equity Ratio</h6>
+                    <h2 *ngIf="pro; else showThis" class="text-right"><i class="fa fa-rocket f-left"></i><span>{{debt_to_equity}}</span></h2>
                     <ng-template #showThis>      
                         <h2 class="text-right"><i class="fa fa-lock f-left"></i><span> Please Subscribe</span></h2>
                     </ng-template>

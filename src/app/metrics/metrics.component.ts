@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-metrics',
@@ -9,43 +10,38 @@ import { Router } from '@angular/router';
 })
 export class MetricsComponent implements OnInit {
   public pro:boolean=false;
-  pe_ratio:number;
-  pb_ratio:number;
-  div_yield:number;
-  sector_pe:number;
+  pe_ratio:string;
+  dividend_pre_share:string;
+  div_yield:string;
+  debt_to_equity:string;
   buy:number;
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router,private _authservice:AuthService) { }
   @Input('stock') public name:string;
 
   ngOnInit(): void {
-    if(localStorage.getItem('type')==="pro"){
+    if(localStorage.getItem('Type')==="pro"){
       this.pro=true;
     }
-    console.log(this.pro);
+    this.fetchmetric();
+
   }
   ngOnChanges(): void{
-    if(this.name==="TCS"){
-      this.pe_ratio=42.09;
-      this.pb_ratio=15.67;
-      this.div_yield=1.03;
-      this.sector_pe=37.39;
-      this.buy=59;
-    }
-    else if(this.name==="ICICIBANK"){
-      this.pe_ratio=29.51;
-      this.pb_ratio=3.24;
-      this.div_yield=0.56;
-      this.sector_pe=27.32;
-      this.buy=100;
-    }
-    else if(this.name==="BAJFINANCE"){
-      this.pe_ratio=93.69;
-      this.pb_ratio=11.22;
-      this.div_yield=0.15;
-      this.sector_pe=27.32;
-      this.buy=59;
-    }
+    this.fetchmetric();
 
+  }
+  fetchmetric(){
+    this._authservice.getmetric(this.name)
+    .subscribe(
+      res=>{
+        
+        this.pe_ratio=parseFloat(res[0]['peRatioTTM']).toFixed(2);
+        this.div_yield = parseFloat(res[0]['dividendYieldTTM']).toFixed(2);
+        this.debt_to_equity =parseFloat(res[0]['debtEquityRatioTTM']).toFixed(2);
+        this.dividend_pre_share=parseFloat(res[0]['dividendPerShareTTM']).toFixed(2);
+        this.buy = 75;
+      },
+      err=>{console.log(err)}
+    )
   }
 
 }
